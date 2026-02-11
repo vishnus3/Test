@@ -53,7 +53,7 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
 ]
 
-ROOT_URLCONF = "Testswr.urls"
+ROOT_URLCONF = 'Testswr.urls'
 
 TEMPLATES = [
     {
@@ -79,7 +79,7 @@ WSGI_APPLICATION = "Testswr.wsgi.application"
 
 DATABASES = {
  'default': {
- 'ENGINE': 'django.contrib.gis.db.backends.postgis',
+ 'ENGINE': 'django.db.backends.postgresql',
  'NAME': 'Swr',
  'USER': 'postgres',
  'PASSWORD': '1234',
