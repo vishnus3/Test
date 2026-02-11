@@ -77,15 +77,28 @@ WSGI_APPLICATION = "Testswr.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = {
- 'default': {
- 'ENGINE': 'django.db.backends.postgresql',
- 'NAME': 'Swr',
- 'USER': 'postgres',
- 'PASSWORD': '1234',
- 'HOST':'localhost'
- }
-}
+import os
+
+if os.environ.get("RENDER"):
+    # Render environment → use SQLite
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': '/opt/render/project/src/db.sqlite3',
+        }
+    }
+else:
+    # Local machine → use PostgreSQL
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'Swr',
+            'USER': 'postgres',
+            'PASSWORD': '1234',
+            'HOST': 'localhost',
+            'PORT': '5432',
+        }
+    }
 
 
 
